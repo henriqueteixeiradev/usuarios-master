@@ -96,7 +96,7 @@ class UserController {
                 <td>${dataUser.name}</td>
                 <td>${dataUser.email}</td>
                 <td>${dataUser.admin ? "Sim" : "Não"}</td>
-                <td>${dataUser.birth}</td>
+                <td>${Utils.dateFormat(dataUser.register)}</td>
                 <td>
                     <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
                     <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
