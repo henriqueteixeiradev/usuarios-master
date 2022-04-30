@@ -102,6 +102,8 @@ class UserController {
   addLine(dataUser) {
     let tr = document.createElement("tr");
 
+    tr.dataset.user = JSON.stringify(dataUser);
+
     tr.innerHTML = `
             <tr>
                 <td><img src="${
@@ -119,5 +121,24 @@ class UserController {
         `;
 
     this.tableEl.appendChild(tr);
+
+    this.updateCount();
+  }
+
+  updateCount() {
+    let numberUser = 0;
+    let numberAdmin = 0;
+
+    [...this.tableEl.children].forEach((tr) => {
+      numberUser++;
+      let user = JSON.parse(tr.dataset.user);
+
+      if (user._admin) {
+        numberAdmin++;
+      }
+    });
+
+    document.querySelector("#number-users").innerHTML = numberUser;
+    document.querySelector("#number-users-admin").innerHTML = numberAdmin;
   }
 }
