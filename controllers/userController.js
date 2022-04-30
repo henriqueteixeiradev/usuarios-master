@@ -9,12 +9,13 @@ class UserController {
   onSubmit() {
     this.formEl.addEventListener("submit", (event) => {
       event.preventDefault();
-
       let values = this.getValues();
-
       let btn = this.formEl.querySelector("[type=submit]");
-
       btn.disabled = true;
+
+      if (!values) {
+        return false;
+      }
 
       this.getPhoto().then(
         (content) => {
